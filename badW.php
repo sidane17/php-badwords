@@ -4,11 +4,12 @@
 //esempio: http://localhost/pagina?chiave=valore&nome=luca&cognome=lambiase
 $nome = $_GET["nome"] ?? "Utente";
 $cognome = $_GET["cognome"] ?? "Anonimo";
+$censura = $_GET["censura"] ?? "Anonimo";
 
 //preparo la stringa in anticipo, così l'html resta più leggibile
 $msg = "$nome $cognome";
 $str = strlen($msg);
-
+$replace= str_replace($censura,"",'******');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +25,8 @@ $str = strlen($msg);
 
 <h1><?= $msg; ?></h1>
 <h2>La Lunghezza della stringa è:<?= $str; ?></h1>
+<h2>Censura:<?= $replace ?></h1>
+
 
 
 </body>
